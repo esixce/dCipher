@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Vignere
+comment0.text=\n\ Write\ a\ description\ of\ class\ Vignere\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=Vignere()
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Vignere\n
+comment2.params=plaintext\ keyword
+comment2.target=java.lang.String\ encrypt(java.lang.String,\ java.lang.String)
+comment3.params=ciphertext\ keyword
+comment3.target=java.lang.String\ decrypt(java.lang.String,\ java.lang.String)
+comment4.params=str\ key
+comment4.target=java.lang.String\ generateKey(java.lang.String,\ java.lang.String)
+numComments=5
