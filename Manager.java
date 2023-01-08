@@ -6,50 +6,111 @@ import java.util.Scanner;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Manager
-{
+public class Manager {
     public Manager() {}
 
-    public static void runShift(String plaintext, int key) {
-        
-        String encrypt = Shift.encrypt(plaintext, key);
-        System.out.println(encrypt + "\n");
-        
-        String cryptAnalysisShift = Shift.cryptanalysis(encrypt);
-        System.out.println(cryptAnalysisShift);
-        
+    public static void runSwitch() {
         Scanner sc= new Scanner(System.in); //System.in is a standard input stream  
-        System.out.print("Enter the suspected key: ");  
-        int userKey = sc.nextInt();    
-        
-        String decrypt = Shift.decrypt(encrypt, userKey);
-        System.out.println(decrypt);
-        
+
+        int encryptType = 0;
+        while (encryptType != 9) {
+            System.out.print("Enter the message: ");
+            String input = sc.next().toUpperCase();
+            
+            System.out.print("1) Encrypt \n2) Decrypt \n3) Analysis\n");
+            int operation = sc.nextInt();
+            
+            String output = "";
+            String[] cipherTypes = {"Shift", "Affine", "Vignere", "Hill"};
+            for(int i = 0; i < 4; i++) {
+                output += (i+1) + ") " + cipherTypes[i] + "\n";
+            }
+            System.out.print(output + "9) Quit\n");
+
+            System.out.print("Enter the desired cipher: ");
+            encryptType = sc.nextInt();
+            
+            if (encryptType == 1) {             // shift
+                runShift(input, operation);
+            } else if (encryptType == 2) {      // affine
+                runAffine(input, operation);
+            } else if (encryptType == 3) {      // vignere
+                runVignere(input, operation);
+            } else if (encryptType == 4) {      // hill
+                runHill(input, operation);
+            } else if (encryptType == 9) {      // EXIT
+                System.out.print("Bye");
+            } else {
+                System.out.print("wrong choice");
+            }    
+        }
     }
     
-    public static void runAffine(String plaintext, int key, int a) {
-        String encrypt = Affine.encrypt(plaintext, key, a);
-        System.out.println(encrypt);
-        
-        String decrypt = Affine.decrypt(encrypt, key, a);
-        System.out.println(decrypt);        
+    public static void runShift(String input, int operation) {
+        Scanner sc= new Scanner(System.in); //System.in is a standard input stream  
+        System.out.print("Enter the desired key: ");
+        int key = sc.nextInt();
+        if(operation == 1) {            // encrypt
+            String encrypt = Shift.encrypt(input, key);
+            System.out.println(encrypt + "\n");
+        } else if (operation == 2){     // decrypt
+            String decrypt = Shift.decrypt(input, key);
+            System.out.println(decrypt);
+        } else if (operation == 3){     // analysis
+            String cryptAnalysisShift = Shift.cryptanalysis(input);
+            System.out.println(cryptAnalysisShift);
+            System.out.print("Enter the suspected key: ");  
+            int userKey = sc.nextInt();    
+            String decrypt = Shift.decrypt(input, userKey);
+            System.out.println(decrypt);
+        }
     }
     
-    public static void runVignere(String plaintext, String key) {
-        String encrypt = Vignere.encrypt(plaintext, key);
-        System.out.println(encrypt);
-        
-        String decrypt = Vignere.decrypt(encrypt, key);
-        System.out.println(decrypt);        
+    public static void runAffine(String input, int operation) {
+        Scanner sc= new Scanner(System.in); //System.in is a standard input stream  
+        System.out.print("ax + b where a prime");
+        System.out.print("Enter the desired a: ");
+        int a = sc.nextInt();
+        System.out.print("Enter the desired b: ");
+        int key = sc.nextInt();
+        if(operation == 1) {            // encrypt
+            String encrypt = Affine.encrypt(input, key, a);
+            System.out.println(encrypt);
+        } else if (operation == 2){     // decrypt
+            String decrypt = Affine.decrypt(input, key, a);
+            System.out.println(decrypt);        
+        } else if (operation == 3){     // analysis
+        }
     }
     
-    public static void runHill(String plaintext, String key) {
-        String encrypt = Hill.encrypt(plaintext, key);
-        System.out.println(encrypt);        
-        
-        //String decrypt = Hill.decrypt(encrypt, key);
-        //System.out.println(decrypt);                
+    public static void runVignere(String input, int operation) {
+        Scanner sc= new Scanner(System.in); //System.in is a standard input stream  
+        System.out.print("Enter the desired keyword: ");
+        String keyword = sc.next();
+        if(operation == 1) {            // encrypt
+            String encrypt = Vignere.encrypt(input, keyword);
+            System.out.println(encrypt);
+        } else if (operation == 2){     // decrypt
+            String decrypt = Vignere.decrypt(input, keyword);
+            System.out.println(decrypt);
+        } else if (operation == 3){     // analysis
+        }
     }
     
-    
+    public static void runHill(String input, int operation) {
+        Scanner sc= new Scanner(System.in); //System.in is a standard input stream  
+        System.out.print("Enter the desired a: ");
+        boolean alphaZero = true;
+        String keyword = sc.next();
+        if(operation == 1) {            // encrypt
+            Hill.encrypt(input, alphaZero);
+            //System.out.println(encrypt);        
+        } else if (operation == 2){     // decrypt
+            Hill.decrypt(input, alphaZero);
+            //System.out.println(decrypt);                
+        } else if (operation == 3){     // analysis
+            
+        }
+
+    }
 }

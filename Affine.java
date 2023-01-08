@@ -30,15 +30,11 @@ public class Affine
     
     public static String decrypt(String ciphertext, int key, int a)
     {
-        // ax = y - b mod 26
-        // Decrypt: x = a^-1 * (y - b) mod 26
-        // K = (7, 3)
+        // Decrypt: x = a^-1 * (y - b) mod 26       ax = y - b mod 26
         
         String plaintext = "";
         
         int inverse = findInverse(a);
-        //int inverse = 15;
-        System.out.println(inverse);
         
         for (int i = 0; i < ciphertext.length(); i++) {
             int answer = Math.floorMod(inverse * (ciphertext.charAt(i) - 65 - key), 26) + ASIC;
