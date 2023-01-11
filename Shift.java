@@ -33,13 +33,12 @@ public class Shift {
     public static String cryptanalysis(String ciphertext) {
         String report = "";
         String shiftArray[] = new String[26];
-        for (int i = 0; i < ciphertext.length(); i++) {
-            report += decrypt(ciphertext, i+1) + "\n";
+        for (int i = 0; i < MOD; i++) {
+            report += (i+1) + ") " + decrypt(ciphertext, i+1) + "\n";
             //System.out.println(shiftArray[i]);
         }        
         //System.out.println(report);
         return report;
     }
-    
     
 }

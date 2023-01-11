@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Alphabet
+comment1.params=
+comment1.target=Alphabet()
+comment2.params=
+comment2.target=Pair[]\ getAlphabet()
+comment3.params=i
+comment3.target=Pair\ getEntry(int)
+numComments=4

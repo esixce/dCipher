@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Frequency
+comment1.params=
+comment1.target=Frequency()
+comment2.params=ciphertext
+comment2.target=Pair[]\ getFrequency(java.lang.String)
+comment3.params=fr\ ciphertext\ visited
+comment3.target=void\ echoFrequency(Pair[],\ java.lang.String,\ int)
+numComments=4

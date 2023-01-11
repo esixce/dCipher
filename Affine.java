@@ -20,30 +20,30 @@ public class Affine
     {
         // Encrypt: e(x) = (ax + b) mod 26
         String ciphertext = "";
-        
+
         for (int i = 0; i < plaintext.length(); i++) {
             ciphertext += (char)((Math.floorMod((a * plaintext.charAt(i) - ASIC + key) , MOD)) + 65);
         }
-        
+
         return ciphertext;
     }
-    
+
     public static String decrypt(String ciphertext, int key, int a)
     {
         // Decrypt: x = a^-1 * (y - b) mod 26       ax = y - b mod 26
-        
+
         String plaintext = "";
-        
+
         int inverse = findInverse(a);
-        
+
         for (int i = 0; i < ciphertext.length(); i++) {
             int answer = Math.floorMod(inverse * (ciphertext.charAt(i) - 65 - key), 26) + ASIC;
             plaintext += (char)answer;
         }
-                
+
         return plaintext;
     }
-    
+
     public static int findInverse(int a) {
         int a_inv = 0;
         int flag = 0;
@@ -52,7 +52,7 @@ public class Affine
         for (int i = 0; i < MOD; i++)
         {
             flag = (a * i) % MOD;
- 
+
             // Check if (a*i)%26 == 1,
             // then i will be the multiplicative inverse of a
             if (flag == 1)
@@ -62,5 +62,17 @@ public class Affine
         }
         return a_inv;
     }
-    
+
+    public static void cryptanalysis(String ciphertext) {
+
+        Frequency.getFrequency(ciphertext);
+
+        Alphabet frequencies = DBSim.letterFreq();
+        
+        frequencies
+        
+
+
+    }  
+
 }

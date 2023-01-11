@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=Pair
+comment0.text=\n\ Write\ a\ description\ of\ class\ Pair\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=letter\ frequency
+comment1.target=Pair(char,\ double)
+comment2.params=letter
+comment2.target=Pair(char)
+comment3.params=frequency
+comment3.target=char\ getKey(double)
+comment4.params=letter
+comment4.target=double\ getValue(char)
+comment5.params=letter
+comment5.target=void\ setKey(char)
+comment6.params=frequency
+comment6.target=void\ setValue(double)
+numComments=7
